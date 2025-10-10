@@ -1,0 +1,239 @@
+@use 'colors';
+
+.headroom {
+  position: fixed !important;
+  z-index: 2 !important;
+  transition: 0.35s !important;
+}
+
+.Header {
+  width: 100%;
+  padding: 20px clamp(10px, 3vw, 50px);
+  display: grid;
+  grid-template-columns: 1fr 100fr 1fr;
+  gap: 10px;
+  background-color: colors.$bg;
+
+  .Logo {
+    padding: 6px;
+
+    font: {
+      size: 22px;
+      weight: 600;
+    }
+  }
+
+  .SearchBar {
+    width: 100%;
+    display: flex;
+    gap: 4px;
+    justify-self: center;
+
+    input {
+      width: 100%;
+      padding: 12px 16px;
+      background-color: colors.$bg3;
+      color: colors.$text;
+      border-radius: 10px;
+      transition: background-color 0.2s, color 0.2s;
+
+      font: {
+        size: 14px;
+        family: 'GT Walsheim Pro';
+      }
+
+      &:focus {
+        background-color: colors.$bg4;
+        color: white;
+      }
+    }
+  }
+
+  .Button.Cart {
+    justify-self: flex-end;
+
+    > div {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: colors.$text;
+      color: colors.$bg;
+      border-radius: 10px;
+      transition: background-color 0.2s;
+
+      font: {
+        size: 14px;
+        weight: 600;
+      }
+    }
+
+    &:hover {
+      > div {
+        background-color: white;
+      }
+    }
+  }
+
+  .ProfileBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 6px 14px 6px 6px;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .ProfileAvatar {
+      width: 34px;
+      height: 34px;
+      min-width: 34px;
+      min-height: 34px;
+      border-radius: 50%;
+      background: #9922ff;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+
+      &:hover {
+        background: #aa33ff;
+        transform: scale(1.05);
+      }
+    }
+
+    .ProfileInfo {
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .LogoutDesktop {
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: colors.$text;
+      transition: all 0.2s;
+
+      &:hover {
+        background: rgba(255, 69, 58, 0.15);
+        color: #ff453a;
+      }
+    }
+
+    .LogoutMobile {
+      display: none;
+    }
+
+    .ProfileDropdown {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .Header {
+    grid-template-columns: 100fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    .Logo {
+      order: -2;
+    }
+
+    .SearchBar {
+      min-width: 100% !important;
+      padding-inline: 8px;
+      grid-column: 1 / 3;
+      order: 1;
+    }
+
+    .Button.Cart {
+      order: -1;
+    }
+
+    > div {
+      order: -1;
+    }
+
+    .ProfileBox {
+      background: transparent;
+      padding: 0;
+      gap: 0;
+
+      &:hover {
+        background: transparent;
+      }
+
+      .ProfileAvatar {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+
+      .ProfileInfo {
+        display: none;
+      }
+
+      .LogoutDesktop {
+        display: none;
+      }
+
+      .LogoutMobile {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+        font-weight: 600;
+        background: rgba(255, 69, 58, 0.12);
+        border-radius: 10px;
+        color: #ff453a;
+        transition: all 0.2s;
+
+        &:hover {
+          background: rgba(255, 69, 58, 0.2);
+        }
+      }
+
+      .ProfileDropdown {
+        display: block;
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        background: colors.$bg2;
+        border-radius: 14px;
+        padding: 18px;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+        min-width: 200px;
+        z-index: 100;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+
+        .ProfileDropdownName {
+          color: white;
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 14px;
+          padding-bottom: 14px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          text-align: center;
+        }
+      }
+    }
+  }
+}

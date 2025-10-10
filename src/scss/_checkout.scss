@@ -1,0 +1,487 @@
+.CheckoutContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  margin: 40px auto;
+  max-width: 1100px;
+  color: #fff;
+}
+
+.CheckoutLeft {
+  flex: 2;
+  background: #23232a;
+  border-radius: 12px;
+  padding: 32px 28px;
+  min-width: 380px;
+  max-width: 520px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.15);
+
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+  }
+}
+
+.PaymentMethods {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 28px;
+
+  .PaymentMethod {
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    background: #18181b;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    padding: 16px 18px;
+    cursor: pointer;
+    transition: border 0.2s, box-shadow 0.2s;
+    position: relative;
+
+    &.selected {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px #3b82f6;
+      background: #23232a;
+    }
+
+    input[type='radio'] {
+      margin-right: 18px;
+      accent-color: #3b82f6;
+      width: 18px;
+      height: 18px;
+    }
+
+    img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      margin-right: 18px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 4px;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      .desc {
+        min-height: 28px;
+        margin-top: 4px;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.BuyerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 28px 0 0 0;
+
+  input[type='text'],
+  input[type='email'] {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1.5px solid #333;
+    background: #18181b;
+    color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border 0.2s, background 0.2s;
+    margin-bottom: 0;
+    box-sizing: border-box;
+  }
+
+  input[type='text']::placeholder,
+  input[type='email']::placeholder {
+    color: #bdbdbd;
+    opacity: 1;
+    font-weight: 500;
+  }
+
+  input[type='text']:focus,
+  input[type='email']:focus {
+    border-color: #3b82f6;
+    background: #23232a;
+  }
+}
+
+.PlaceOrderBtn {
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  transition: background 0.2s;
+  &:hover {
+    background: #2563eb;
+  }
+}
+
+.SuccessMsg {
+  margin-top: 18px;
+  color: #22c55e;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.CheckoutRight {
+  flex: 1;
+  min-width: 320px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+  overflow: visible;
+  background: #23232a;
+  border-radius: 12px;
+  padding: 28px 20px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.15);
+
+  .OrderSummary {
+    background: #23232a;
+    border-radius: 16px;
+    padding: 28px 20px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.15);
+    color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+      text-align: left;
+    }
+
+    .OrderGame {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+
+      .OrderImage {
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+      .OrderGameTitle {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+      .OrderGamePublisher {
+        font-size: 0.95rem;
+        color: #bdbdbd;
+      }
+    }
+
+    .OrderPriceRow {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 1rem;
+
+      .Original {
+        text-decoration: line-through;
+        color: #bdbdbd;
+        margin-right: 8px;
+        font-size: 0.98rem;
+      }
+      .Discount {
+        color: #ef4444;
+        font-size: 0.98rem;
+        margin-left: 2px;
+      }
+      &.OrderYouPay {
+        font-weight: 700;
+        color: #22c55e;
+        font-size: 1.1rem;
+        margin-top: 8px;
+      }
+    }
+
+    .CreatorTagInput {
+      margin: 12px 0 8px 0;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #333;
+      background: #18181b;
+      color: #fff;
+      font-size: 0.98rem;
+      width: 100%;
+    }
+
+    .ShareEmailRow {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      input[type='checkbox'] {
+        margin-top: 3px;
+        accent-color: #3b82f6;
+      }
+      label {
+        color: #bdbdbd;
+        b {
+          color: #fff;
+        }
+      }
+    }
+
+    .PlaceOrderBtnGreen {
+      background: #22c55e;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+      transition: background 0.2s;
+      &:hover {
+        background: #16a34a;
+      }
+    }
+  }
+
+  .OrderDetails {
+    margin-top: 10px;
+    font-size: 0.98rem;
+    color: #e5e5e5;
+    div {
+      margin-bottom: 4px;
+      b {
+        color: #fff;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.desc a {
+  color: #3b82f6;
+  text-decoration: underline;
+  margin: 0 4px;
+}
+
+.PaymentMethod .desc {
+  min-height: 28px;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+}
+
+// Responsive styles for mobile
+@media (max-width: 768px) {
+  .CheckoutContainer {
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 16px;
+    align-items: center;
+  }
+
+  .CheckoutLeft {
+    width: 100%;
+    min-width: unset;
+    max-width: 100%;
+    padding: 24px 20px;
+    
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  .PaymentMethods {
+    gap: 12px;
+    margin-bottom: 20px;
+
+    .PaymentMethod {
+      min-height: 80px;
+      padding: 12px 14px;
+      
+      input[type='radio'] {
+        margin-right: 12px;
+        width: 16px;
+        height: 16px;
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        margin-right: 12px;
+      }
+
+      .info {
+        .name {
+          font-size: 0.95rem;
+        }
+        .desc {
+          font-size: 0.85rem;
+          min-height: 24px;
+        }
+      }
+    }
+  }
+
+  .CheckoutRight {
+    width: 100%;
+    min-width: unset;
+    max-width: 100%;
+    padding: 24px 20px;
+
+    .OrderSummary {
+      padding: 24px 16px;
+
+      h3 {
+        font-size: 1rem;
+        margin-bottom: 14px;
+      }
+
+      .OrderGame {
+        gap: 10px;
+        margin-bottom: 10px;
+
+        .OrderImage {
+          width: 50px;
+          height: 50px;
+        }
+
+        .OrderGameTitle {
+          font-size: 0.95rem;
+        }
+
+        .OrderGamePublisher {
+          font-size: 0.9rem;
+        }
+      }
+
+      .OrderPriceRow {
+        font-size: 0.95rem;
+        
+        .Original,
+        .Discount {
+          font-size: 0.9rem;
+        }
+
+        &.OrderYouPay {
+          font-size: 1.05rem;
+        }
+      }
+
+      .CreatorTagInput {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+      }
+
+      .ShareEmailRow {
+        font-size: 0.85rem;
+        gap: 6px;
+      }
+
+      .PlaceOrderBtnGreen {
+        padding: 12px 0;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .BuyerForm {
+    gap: 12px;
+    margin-top: 20px;
+
+    input[type='text'],
+    input[type='email'] {
+      padding: 10px 14px;
+      font-size: 0.95rem;
+    }
+  }
+
+  .PlaceOrderBtn {
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+}
+
+// Extra small devices
+@media (max-width: 480px) {
+  .CheckoutContainer {
+    margin: 16px 12px;
+  }
+
+  .CheckoutLeft,
+  .CheckoutRight {
+    padding: 20px 16px;
+  }
+
+  .PaymentMethods {
+    .PaymentMethod {
+      flex-wrap: wrap;
+      min-height: auto;
+      
+      input[type='radio'] {
+        margin-right: 10px;
+      }
+
+      img {
+        width: 36px;
+        height: 36px;
+        margin-right: 10px;
+      }
+
+      .info {
+        flex: 1;
+        min-width: 0;
+        
+        .name {
+          font-size: 0.9rem;
+        }
+        
+        .desc {
+          font-size: 0.8rem;
+          line-height: 1.3;
+        }
+      }
+    }
+  }
+
+  .CheckoutRight .OrderSummary {
+    padding: 20px 14px;
+
+    h3 {
+      font-size: 0.95rem;
+    }
+
+    .ShareEmailRow {
+      font-size: 0.8rem;
+      
+      label {
+        line-height: 1.4;
+      }
+    }
+  }
+}

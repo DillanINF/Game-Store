@@ -1,0 +1,260 @@
+@use 'colors';
+@use 'header';
+@use 'cart';
+@use 'home';
+@use 'game-list';
+@use 'game-details';
+@use 'checkout';
+@use 'login';
+
+@keyframes loading {
+
+  0% {
+    background-color: colors.$bg3;
+  }
+
+  50% {
+    background-color: colors.$bg4;
+  }
+
+  100% {
+    background-color: colors.$bg3;
+  }
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'GT Walsheim Pro';
+  background-color: colors.$bg;
+  overflow-x: hidden;
+}
+
+.Loading {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1;
+}
+
+.NotFound {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 1 1;
+  text-align: center;
+
+  h1 {
+    color: colors.$accent;
+
+    font: {
+      size: 80px;
+      weight: 800;
+    }
+  }
+
+  p {
+    color: white;
+
+    font: {
+      size: 20px;
+      weight: 500;
+    }
+  }
+
+  .Redirect {
+    width: 80%;
+    max-width: 500px;
+    margin-top: 40px;
+    font-size: 16px;
+    color: colors.$text;
+
+    .ProgressBar {
+      height: 4px;
+      margin-top: 20px;
+      border-radius: 2px;
+      background-color: colors.$accent;
+    }
+  }
+}
+
+.NavBar {
+  margin-bottom: min(4.5vw, 30px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  .Button.Store {
+    padding: 0;
+    font-size: clamp(16px, 4.25vw, 24px);
+
+    &:hover {
+      color: colors.$accent;
+    }
+  }
+
+  h2 {
+    margin-inline: 6px;
+    text-align: right;
+    color: white;
+
+    font: {
+      size: clamp(22px, 5vw, 58px);
+      weight: 800;
+    }
+  }
+}
+
+.Button {
+  width: fit-content;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: colors.$text;
+  user-select: none;
+  cursor: pointer;
+  transition: transform 0.15s, color 0.2s;
+
+  font: {
+    size: 16px;
+    weight: 500;
+    family: 'GT Walsheim Pro';
+  }
+
+  svg {
+    transition: transform 0.2s;
+  }
+
+  &:hover {
+    color: white;
+  }
+
+  &:active {
+    transform: scale(0.925) !important;
+  }
+}
+
+.BackgroundImage {
+  height: 100% !important;
+
+  background: {
+    size: cover;
+    position: center;
+  }
+}
+
+.Wrapper > div:last-child:not(.BackgroundImage) {
+  z-index: 0;
+  animation: loading 1.25s infinite;
+  pointer-events: none;
+
+  &::before {
+    content: none;
+  }
+}
+
+.CheckoutPage {
+  max-width: 500px;
+  margin: 40px auto;
+  background: #18181b;
+  border-radius: 16px;
+  padding: 32px 24px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.2);
+  color: #fff;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    input[type='text'],
+    input[type='email'] {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background: #23232a;
+      color: #fff;
+      font-size: 1rem;
+    }
+  }
+
+  .PaymentOptions {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin: 18px 0;
+
+    .PaymentOption {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 2px solid transparent;
+      transition: border 0.2s;
+
+      input[type='radio'] {
+        margin-bottom: 6px;
+      }
+
+      img {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+        margin-bottom: 4px;
+      }
+
+      span {
+        font-size: 0.95rem;
+        color: #fff;
+      }
+    }
+
+    .PaymentOption input[type='radio']:checked + img,
+    .PaymentOption input[type='radio']:checked + span {
+      border-color: #a855f7;
+      color: #a855f7;
+    }
+  }
+
+  button[type='submit'] {
+    background: #a855f7;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s;
+    &:hover {
+      background: #9333ea;
+    }
+  }
+
+  .SuccessMsg {
+    margin-top: 18px;
+    color: #22c55e;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+}
