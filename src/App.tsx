@@ -1,13 +1,12 @@
 import { useCallback, useState, useEffect } from 'react';
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Header, Cart } from './components';
 import { gameList } from './rawg-api';
-import { Home, GameList, GameDetails, NotFound, CheckoutPage, LoginPage } from './pages';
+import { Home, GameList, GameDetails, NotFound, CheckoutPage } from './pages';
 import getPrice from './utils/getPrice';
 import { Game } from './types/Game.types';
 import './scss/App.scss';
-import ProtectedRoute from './components/ProtectedRoute';
 
 const loadGames = async (search = '') => {
   const response = await gameList({ page_size: 50, search });
@@ -38,16 +37,11 @@ function App() {
     setCartItems(cartItems.filter((item) => !ids.includes(item.id)));
   }, [cartItems]);
 
-  // Jangan render Header jika di halaman login
-  const isLoginPage = location.pathname === '/login';
-
   return (
     <div className="App">
-      {!isLoginPage && (
-        <Header cartItems={cartItems} setIsCartOpen={setIsCartOpen} />
-      )}
+      <Header cartItems={cartItems} setIsCartOpen={setIsCartOpen} />
       <AnimatePresence exitBeforeEnter>
-        {isCartOpen && !isLoginPage && (
+        {isCartOpen && (
           <Cart
             cartItems={cartItems}
             setIsCartOpen={setIsCartOpen}
@@ -57,47 +51,33 @@ function App() {
       </AnimatePresence>
       <AnimatePresence exitBeforeEnter>
         <Routes location={location} key={location.pathname}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Home loadGames={loadGames} />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/" element={<Home loadGames={loadGames} />} />
           <Route
             path="/games"
             element={
-              <ProtectedRoute>
-                <GameList
-                  loadGames={loadGames}
-                  cartItems={cartItems}
-                  addToCart={addToCart}
-                />
-              </ProtectedRoute>
+              <GameList
+                loadGames={loadGames}
+                cartItems={cartItems}
+                addToCart={addToCart}
+              />
             }
           />
           <Route
             path="/games/:gameId"
             element={
-              <ProtectedRoute>
-                <GameDetails
-                  cartItems={cartItems}
-                  addToCart={addToCart}
-                />
-              </ProtectedRoute>
+              <GameDetails
+                cartItems={cartItems}
+                addToCart={addToCart}
+              />
             }
           />
           <Route
             path="/checkout"
             element={
-              <ProtectedRoute>
-                <CheckoutPage cartItems={cartItems} />
-              </ProtectedRoute>
+              <CheckoutPage cartItems={cartItems} />
             }
           />
-          <Route path="*" element={<Navigate to="/login" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
     </div>
