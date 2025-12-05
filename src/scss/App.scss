@@ -1,34 +1,25 @@
-@use 'colors';
-@use 'header';
-@use 'cart';
-@use 'home';
-@use 'game-list';
-@use 'game-details';
-@use 'checkout';
-@use 'login';
-
-@keyframes loading {
-
-  0% {
-    background-color: colors.$bg3;
-  }
-
-  50% {
-    background-color: colors.$bg4;
-  }
-
-  100% {
-    background-color: colors.$bg3;
-  }
-}
-
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: 'GT Walsheim Pro';
-  background-color: colors.$bg;
-  overflow-x: hidden;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  background-color: #1a1a1a;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.App h1 {
+  color: #a855f7;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.App p {
+  font-size: 1.2rem;
+  color: #ccc;
 }
 
 .Loading {
