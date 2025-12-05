@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { BackgroundImage } from 'react-image-and-background-image-fade';
 
 interface Props {
   id: number,
@@ -33,12 +32,14 @@ function GameCard({
       }}
       onClick={navigateToGame}
     >
-      <BackgroundImage
+      <div
         className="BackgroundImage"
-        wrapperClassName="Wrapper"
-        src={backgroundImage}
-        transitionTime="1s"
-        isResponsive
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          transition: 'opacity 1s ease-in-out'
+        }}
       >
         <div className="Overlay">
           <AnimatePresence exitBeforeEnter>
@@ -59,7 +60,7 @@ function GameCard({
             )}
           </AnimatePresence>
         </div>
-      </BackgroundImage>
+      </div>
     </motion.div >
   );
 }

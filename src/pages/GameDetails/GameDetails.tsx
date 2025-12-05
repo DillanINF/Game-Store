@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { BackgroundImage } from 'react-image-and-background-image-fade';
 import { Button, Loading, Transition } from '../../components';
 import Carousel from './components/Carousel';
 import Info from './components/Info';
@@ -46,13 +45,16 @@ function GameDetails({ cartItems, addToCart }: Props) {
                 key={`img-${screenshot.id}`}
                 className="Image"
               >
-                <BackgroundImage
+                <div
                   className="BackgroundImage"
-                  wrapperClassName="Wrapper"
-                  src={screenshot.image}
-                  transitionTime="1s"
-                  isResponsive
-                  lazyLoad
+                  style={{
+                    backgroundImage: `url(${screenshot.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    transition: 'opacity 1s ease-in-out',
+                    width: '100%',
+                    height: '100%'
+                  }}
                 />
               </div>
             ))}
