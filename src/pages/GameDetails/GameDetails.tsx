@@ -53,7 +53,7 @@ function GameDetails({ cartItems, addToCart }: Props) {
                     backgroundPosition: 'center',
                     transition: 'opacity 1s ease-in-out',
                     width: '100%',
-                    height: '100%'
+                    height: '100%',
                   }}
                 />
               </div>

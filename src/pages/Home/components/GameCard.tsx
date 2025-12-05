@@ -38,7 +38,7 @@ function GameCard({
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          transition: 'opacity 1s ease-in-out'
+          transition: 'opacity 1s ease-in-out',
         }}
       >
         <div className="Overlay">
