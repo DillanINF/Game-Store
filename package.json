@@ -1,7 +1,7 @@
 {
   "name": "shopping-cart",
   "version": "0.1.0",
-  "homepage": "https://DillanINF.github.io/shopping-cart",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@react-hook/window-size": "^3.0.7",
